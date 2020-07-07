@@ -55,8 +55,8 @@
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="registerDialog = false">重 置</el-button>
-        <el-button type="primary" @click="registerDialog = false">注 册</el-button>
+        <el-button @click="resetDialog">重 置</el-button>
+        <el-button type="primary" @click="register">注 册</el-button>
       </span>
     </el-dialog>
   </div>
@@ -65,10 +65,10 @@
 export default {
   data() {
     let phoneRule = (rule, value, callback) => {
-      if (value.length!=11||!(/^1[3456789]\d{9}$/.test(value))) {
+      if (value.length != 11 || !/^1[3456789]\d{9}$/.test(value)) {
         return callback(new Error("手机号码格式不正确"));
       }
-      callback()
+      callback();
     };
 
     return {
@@ -120,13 +120,36 @@ export default {
     //登录方法
     login() {
       //验证所有的字段，是否符合规则
-      this.$refs["loginFormRef"].validate(bool => {
-        console.log(bool);
+      this.$refs["loginFormRef"].validate(async bool => {
+        if (!bool) return;
+        let result = await this.$http.post("login", this.loginForm);
+        if (result.status === 200) {
+          this.$message.success("登录成功");
+          sessionStorage.setItem("token", result.headers.token);
+        } else {
+          this.$message.success("登录失败");
+        }
       });
     },
+
+    //注册方法
+    register(){
+      this.$refs["registerFormRef"].validate(async bool=>{
+        if (!bool) return;
+        let result=await this.$http.post("/register",this.registerForm)
+        if(result.status===200){
+          this.$message.success("注册成功");
+          this.resetDialog()
+        }
+        else{
+          this.$message.success("注册失败");
+        }
+      })
+    },
     //重置表单
-    resetDialog(){
-      this.$refs["registerFormRef"].resetFields()
+    resetDialog() {
+      this.$refs["registerFormRef"].resetFields();
+      this.registerDialog=false;
     }
   }
 };

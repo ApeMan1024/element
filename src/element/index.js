@@ -8,7 +8,8 @@ import {
     FormItem,
     Input,
     Button,
-    Dialog
+    Dialog,
+    Message
 } from "element-ui"
 
 Vue.use(Container)
@@ -19,3 +20,5 @@ Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Button)
 Vue.use(Dialog)
+
+Vue.prototype.$message=Message
