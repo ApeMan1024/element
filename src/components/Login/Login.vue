@@ -14,11 +14,13 @@
             ></el-input>
           </el-form-item>
           <el-form-item prop="pass">
+            <!-- 如果绑定在组件上事件是原生事件，需要添加.native -->
             <el-input
               prefix-icon="iconfont icon-mima"
               placeholder="请输入密码"
               type="password"
               v-model="loginForm.pass"
+              @keyup.native.enter="login"
             ></el-input>
           </el-form-item>
 
@@ -123,9 +125,10 @@ export default {
       this.$refs["loginFormRef"].validate(async bool => {
         if (!bool) return;
         let result = await this.$http.post("login", this.loginForm);
-        if (result.status === 200) {
+        if (result.data.status === 200) {
           this.$message.success("登录成功");
           sessionStorage.setItem("token", result.headers.token);
+          this.$router.push("/index/welcome")
         } else {
           this.$message.success("登录失败");
         }
@@ -137,7 +140,7 @@ export default {
       this.$refs["registerFormRef"].validate(async bool=>{
         if (!bool) return;
         let result=await this.$http.post("/register",this.registerForm)
-        if(result.status===200){
+        if(result.data.status===200){
           this.$message.success("注册成功");
           this.resetDialog()
         }
@@ -150,6 +153,11 @@ export default {
     resetDialog() {
       this.$refs["registerFormRef"].resetFields();
       this.registerDialog=false;
+    },
+
+    beforeRouteEnter (to, from, next) {
+      sessionStorage.setItem("token","")
+      next()
     }
   }
 };
