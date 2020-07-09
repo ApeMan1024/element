@@ -88,7 +88,7 @@ export default {
         ],
         pass: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 8, max: 20, message: "密码长度范围为8-20", trigger: "blur" }
+          { min: 6, max: 20, message: "密码长度范围为8-20", trigger: "blur" }
         ]
       },
       //控制弹框的显示和隐藏
@@ -109,7 +109,7 @@ export default {
         ],
         pass: [
           { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 8, max: 20, message: "密码长度范围为8-20", trigger: "blur" }
+          { min: 6, max: 20, message: "密码长度范围为8-20", trigger: "blur" }
         ],
         phone: [
           { required: true, message: "请输入手机号码", trigger: "blur" },

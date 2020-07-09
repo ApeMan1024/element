@@ -29,6 +29,7 @@
           unique-opened
           v-for="(item,index) in menulist"
           :key="item.id"
+          @select="select"
         >
           <el-menu-item :index="item.activePath">
             <i :class="menuCode[index]"></i>
@@ -68,6 +69,9 @@ export default {
     quit(){
       sessionStorage.setItem("token","")
       this.$router.push("/login")
+    },
+    select(index,indexPath){
+      this.activePath=index
     }
   }
 };
