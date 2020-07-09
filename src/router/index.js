@@ -5,6 +5,9 @@ import Index from "../components/Reader/Index.vue"
 import welcome from "../components/Reader/welcome/welcome.vue"
 import Select from "../components/Reader/select/select.vue"
 import Back from "../components/Reader/back/back.vue"
+import Borrow from "../components/Reader/borrow/borrow.vue"
+
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,6 +19,8 @@ const routes = [
       { path: "welcome", component: welcome },
       { path: "select", component: Select },
       { path: "back", component: Back },
+      { path: "borrow", component: Borrow },
+      
     ],
     redirect: "/index/welcome"
   }
