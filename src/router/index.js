@@ -1,11 +1,27 @@
 import Vue from "vue"
 import VueRouter from 'vue-router'
-import Login from "../components/Login/Login.vue"
-import Index from "../components/Reader/Index.vue"
-import welcome from "../components/Reader/welcome/welcome.vue"
-import Select from "../components/Reader/select/select.vue"
-import Back from "../components/Reader/back/back.vue"
-import Borrow from "../components/Reader/borrow/borrow.vue"
+// import Login from "../components/Login/Login.vue"
+
+const Login=()=>import(/*webpackChunkName:'login'*/ "../components/Login/Login.vue")
+
+
+const Index=()=>import(/*webpackChunkName:'reader'*/"../components/Reader/Index.vue")
+
+// import Index from "../components/Reader/Index.vue"
+
+const welcome=()=>import(/*webpackChunkName:'reader'*/ "../components/Reader/welcome/welcome.vue")
+// import welcome from "../components/Reader/welcome/welcome.vue"
+
+const Select=()=>import(/*webpackChunkName:'reader'*/ "../components/Reader/select/select.vue")
+// import Select from "../components/Reader/select/select.vue"
+
+const Back=()=>import(/*webpackChunkName:'reader'*/ "../components/Reader/back/back.vue")
+// import Back from "../components/Reader/back/back.vue"
+
+const Borrow=()=>import(/*webpackChunkName:'reader'*/"../components/Reader/borrow/borrow.vue")
+// import Borrow from "../components/Reader/borrow/borrow.vue"
+
+
 
 
 Vue.use(VueRouter)

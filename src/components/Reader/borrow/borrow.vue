@@ -87,6 +87,8 @@ export default {
   async created() {
     //获取图书信息
     this.getBookInfo();
+
+    console.log(123)
   },
   methods: {
     //监听页码改变

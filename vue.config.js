@@ -1,0 +1,9 @@
+module.exports={
+    devServer:{
+        proxy:{
+            "/tushu":{
+                target:"http://39.108.174.26:3000"
+            }
+        }
+    }
+}

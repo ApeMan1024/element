@@ -16,7 +16,7 @@ import axios from "axios"
 Vue.config.productionTip = false
 
 //配置公共的请求路径
-axios.defaults.baseURL = "http://localhost:4000/tushu"
+axios.defaults.baseURL = "/tushu"
 
 
 //请求拦截器
