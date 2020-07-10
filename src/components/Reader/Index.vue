@@ -51,12 +51,14 @@ export default {
       menulist: [
         { menuname: "图书信息查询", activePath: "/index/select", id: 1 },
         { menuname: "图书归还", activePath: "/index/back", id: 2 },
-        { menuname: "图书借阅", activePath: "/index/borrow", id: 3 },
+        { menuname: "图书借阅", activePath: "/index/borrow", id: 3 }
+        
       ],
       menuCode: [
         "el-icon-menu",
         "el-icon-document",
-        "el-icon-setting",
+        "el-icon-setting"
+        
       ],
       //当前被激活的菜单选项
       activePath: ""

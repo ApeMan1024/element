@@ -50,10 +50,23 @@
         </el-form-item>
         <el-form-item prop="phone">
           <el-input
-            prefix-icon="iconfont icon-mima"
+            prefix-icon="iconfont icon-shouji"
             placeholder="请输入手机号码"
             v-model="registerForm.phone"
           ></el-input>
+        </el-form-item>
+        <el-form-item prop="name">
+          <el-input
+            prefix-icon="iconfont icon-xingming"
+            placeholder="姓名"
+            v-model="registerForm.name"
+          ></el-input>
+        </el-form-item>
+        <el-form-item prop="sex">
+          <el-select v-model="registerForm.sex" placeholder="请选择">
+            <el-option label="男" value="男"></el-option>
+            <el-option label="女" value="女"></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -98,7 +111,9 @@ export default {
       registerForm: {
         user: "",
         pass: "",
-        phone: ""
+        phone: "",
+        name: "",
+        sex: ""
       },
 
       //注册表单验证
@@ -114,7 +129,9 @@ export default {
         phone: [
           { required: true, message: "请输入手机号码", trigger: "blur" },
           { validator: phoneRule, trigger: "blur" }
-        ]
+        ],
+        name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+        sex: [{ required: true, message: "请选择性别", trigger: "blur" }]
       }
     };
   },
@@ -128,7 +145,7 @@ export default {
         if (result.data.status === 200) {
           this.$message.success("登录成功");
           sessionStorage.setItem("token", result.headers.token);
-          this.$router.push("/index/welcome")
+          this.$router.push("/index/welcome");
         } else {
           this.$message.success("登录失败");
         }
@@ -136,28 +153,27 @@ export default {
     },
 
     //注册方法
-    register(){
-      this.$refs["registerFormRef"].validate(async bool=>{
+    register() {
+      this.$refs["registerFormRef"].validate(async bool => {
         if (!bool) return;
-        let result=await this.$http.post("/register",this.registerForm)
-        if(result.data.status===200){
+        let result = await this.$http.post("/register", this.registerForm);
+        if (result.data.status === 200) {
           this.$message.success("注册成功");
-          this.resetDialog()
-        }
-        else{
+          this.resetDialog();
+        } else {
           this.$message.success("注册失败");
         }
-      })
+      });
     },
     //重置表单
     resetDialog() {
       this.$refs["registerFormRef"].resetFields();
-      this.registerDialog=false;
+      this.registerDialog = false;
     },
 
-    beforeRouteEnter (to, from, next) {
-      sessionStorage.setItem("token","")
-      next()
+    beforeRouteEnter(to, from, next) {
+      sessionStorage.setItem("token", "");
+      next();
     }
   }
 };

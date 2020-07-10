@@ -3,7 +3,7 @@
     <!-- 面包屑导航 -->
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/index/welcome' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>图书查询</el-breadcrumb-item>
+      <el-breadcrumb-item>图书借阅</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 卡片视图 -->
     <el-card class="box-card">

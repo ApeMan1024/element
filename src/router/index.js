@@ -19,8 +19,7 @@ const routes = [
       { path: "welcome", component: welcome },
       { path: "select", component: Select },
       { path: "back", component: Back },
-      { path: "borrow", component: Borrow },
-      
+      { path: "borrow", component: Borrow }
     ],
     redirect: "/index/welcome"
   }

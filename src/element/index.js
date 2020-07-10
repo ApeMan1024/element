@@ -22,7 +22,9 @@ import {
     Card,
     Table,
     TableColumn,
-    Pagination
+    Pagination,
+    Select,
+    Option
 } from "element-ui"
 
 Vue.use(Container)
@@ -46,6 +48,7 @@ Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
 Vue.use(Pagination)
-
+Vue.use(Select)
+Vue.use(Option)
 
 Vue.prototype.$message=Message
